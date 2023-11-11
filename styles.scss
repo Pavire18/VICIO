@@ -1,0 +1,263 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+.header{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &_img{
+        width: 10vw;
+    }
+    &_right{
+        display: flex;
+        gap: 20px;
+    }
+
+    &_text{
+        font-weight: bold;
+        display: none;
+    }
+    &_button{
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 50%;
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight: bold;
+        font-size: 4vw;
+        transition: 0.7s;
+        &:hover{
+            background-color: black;
+            border: 1px solid white;
+            color: white;
+        }
+    }
+
+}
+
+.title{
+    width: 50%;
+    padding: 20px;
+    &_text{
+        font-size: 4vw;
+        margin: 0;
+    }
+
+}
+
+.main-content{
+    display: flex;
+    justify-content: center;
+}
+
+
+.footer{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 20%;
+    ul{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0;
+        list-style: none;
+        li{
+            margin-bottom: 10px;
+        }
+    }
+    &_list1{
+        a{
+            text-decoration: none;
+            color: black;
+            font-size: 0.8rem;
+            transition: 0.7s;
+            &:hover{
+                font-size: 1rem;
+            }
+        }
+    }
+    &_list2{
+        a{
+            text-decoration: none;
+            color: gray;
+            font-size: 0.6rem;
+            transition: 0.7s;
+            &:hover{
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
+
+
+@mixin card($backgroud-color, $color){
+    width: 100%;
+    background-color: $backgroud-color;
+    border-radius: 15px;
+    box-shadow: 6px 7px 14px -2px rgba(0,0,0,0.44);
+    -webkit-box-shadow: 6px 7px 14px -2px rgba(0,0,0,0.44);
+    -moz-box-shadow: 6px 7px 14px -2px rgba(0,0,0,0.44);
+    color: $color;
+
+    .data{
+        padding: 8%;
+    }
+
+    .user{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        .user_img{
+            width: 30px;
+            padding: 1%;
+            background-color: white;
+            border-radius: 100%;
+        }
+        .user-data{
+            p{
+                margin: 0;
+                margin-left: 10px;
+            }
+            &_text{
+                color: gray;
+            }
+        }
+    }
+
+    .description{
+        margin: 0;
+        &_text1{
+            font-weight: bold;
+            font-size:20px;
+        }
+        &_text2{
+            color: gray;
+            font-size:10px;
+        }
+    }
+}
+
+.cards{
+
+    background-image: url(assets/burger.png);
+    background-repeat: no-repeat;
+    background-size: 40rem;
+
+    display: grid;
+    padding: 20px;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    grid-template-areas:
+        "card-1"
+        "card-2"
+        "card-3"
+        "card-4"
+        "card-5";
+
+    .card_1{
+        @include card(red, white);
+        grid-area: card-1;
+    }
+    .card_2{
+        @include card(black, white);
+        grid-area: card-2;
+        }
+    .card_3{
+        @include card(white,black);
+        grid-area: card-3;
+    }
+    .card_4{
+        @include card(black, white);
+        grid-area: card-4;
+    }
+    .card_5{
+        @include card(white,black);
+        grid-area: card-5;
+    }
+}
+
+
+
+@media screen and (min-width: 769px){
+    .data{
+        padding: 5%;
+    }
+    .header_button{
+        font-size: 3vw;
+    }
+   .cards{
+    grid-template-areas:
+        "card-1 card-1 card-2"
+        "card-3 card-4 card-4"
+        "card-5 card-5 card-5";
+        gap: 20px;
+   }
+   .description{
+        margin: 0;
+        &_text1{
+            font-size:25px;
+        }
+        &_text2{
+            font-size:15px;
+        }
+    }
+    .footer{
+        display: flex;
+        justify-content: space-between;
+        width: 95%;
+        ul{
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            padding: 0;
+            list-style: none;
+            li{
+                margin-bottom: 10px;
+            }
+        }
+        &_list1{
+            font-weight: bolder;
+        }
+        &_list2{
+            color: gray;
+        }
+    }
+
+}
+
+@media screen and (min-width: 1280px){
+    .header_button{
+        font-size: 1.5vw;
+    }
+    .cards{
+    width: 70%;
+    grid-template-areas:
+        "card-1 card-1 card-2 card-5"
+        "card-3 card-4 card-4 card-5";
+        gap: 20px;
+   }
+   .header{
+    &_text{
+        display: block;
+    }
+   }
+   .description{
+        margin: 0;
+        &_text1{
+            font-size:35px;
+        }
+        &_text2{
+            font-size:25px;
+        }
+    }
+}
